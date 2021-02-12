@@ -1,0 +1,54 @@
+set encoding=utf-8
+
+" set the dictionary paths. to activate pop-up window. Control xk. Control buton = ^
+set dictionary+=/usr/share/dict/web2
+
+" finding files:  Display all matching files when we tab complete
+set wildmenu
+
+" always switch to VIM from VI
+set nocompatible
+
+set belloff=all
+
+" create a template for c files
+autocmd BufNewFile *.c 0r ~/.vim/templates/c.skel
+
+" † figure out † auto fill in class name 
+" create a template for java files
+autocmd BufNewFile *.java 0r ~/.vim/templates/java.skel
+
+" ruler: displays the line number, the column number, the virtual column number,
+"   and the relative position of the cursor in the file (as a percentage)
+set ruler               " show line and column number
+
+syntax enable           " syntax highlighting
+set showcmd             " show (partial) command in status line
+"set autoindent          " copy indent from current line when starting a new line
+set smartindent
+set shiftwidth=4        " number of spaces to use for auto indent
+set tabstop=4           " use 4 spaces to represent tab
+set relativenumber		" show current line number with surrounding offsets
+set number				" static numbering OFF
+
+" Snippet
+" n     -> Normal Mode. Snippet for when in n
+" nore  -> Not Recursive.
+" map   -> The key binding function
+" <F4>  -> when <F4> is pressed in normal mode
+" :-1read ~/pt.txt -> read in contents from file with a -1 offset when inputting
+" <CR> enter pressed
+nnoremap <F4> :read ~/pt.txt<CR>
+
+" short cut back to Normal mode 
+imap ;; <Esc>
+
+" Abbreviations
+" insert mode. when 'this' typed replace it with 'that'
+"  ab this that
+ab hwg here we go	
+
+" To standardize width. Make the 81st column out
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn','\%81v',100)
+" '\%81v' -> regex "once at the 81st column virtually"
